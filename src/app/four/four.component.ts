@@ -1,6 +1,7 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, ElementRef, AfterViewInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { fromEvent, map } from 'rxjs';
+import { ViewChild } from '@angular/core';
 
 
 @Component({
@@ -8,15 +9,16 @@ import { fromEvent, map } from 'rxjs';
   templateUrl: './four.component.html',
   styleUrls: ['./four.component.scss']
 })
-export class FourComponent implements OnInit {
+export class FourComponent implements AfterViewInit{
   posY: number = 0;
+  @ViewChild('AreaY') el!: ElementRef;
   idOffer: string = '';
  constructor(private ActivatedRoute:ActivatedRoute){}
 
- ngOnInit(): void {
+ ngAfterViewInit(): void {
    this.idOffer = this.ActivatedRoute.snapshot.params['idOffer'];
-   const el = document.querySelector('.navbar')!;
-   const mouseMove = fromEvent<MouseEvent>(el, 'mousemove');
+   
+   const mouseMove = fromEvent<MouseEvent>(this.el.nativeElement, 'mousemove');
 
    mouseMove.pipe(map(z => z.clientY)).subscribe(data => this.posY = data);
  }

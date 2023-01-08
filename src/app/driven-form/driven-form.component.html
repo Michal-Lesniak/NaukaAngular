@@ -1,0 +1,15 @@
+
+
+<div class="container">
+    <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
+        <mat-form-field class="full-width">
+            <mat-label>Author</mat-label>
+            <input matInput name="name" ngModel>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <mat-label>Birth date</mat-label>
+            <input matInput name="birthdate" ngModel>
+        </mat-form-field>
+        <button mat-stroked-button type="submit">Wyslij</button>
+    </form>
+</div>

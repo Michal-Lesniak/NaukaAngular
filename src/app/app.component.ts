@@ -29,7 +29,7 @@ export class AppComponent implements DoCheck {
         this.title = 'PageFour';
         break;
       default:
-        this.title = 'PageOne';
+        this.title = '';
         break;
     }
   };

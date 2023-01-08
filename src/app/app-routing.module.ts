@@ -6,6 +6,9 @@ import { ThreeComponent } from './three/three.component';
 import { FourComponent } from './four/four.component';
 import { OneDetailComponent } from './one-detail/one-detail.component';
 import { FiveComponent } from './five/five.component';
+import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { FetchdataV2Component } from './fetchdata-v2/fetchdata-v2.component';
+import { DrivenFormComponent } from './driven-form/driven-form.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'one', pathMatch: 'full'},
@@ -14,7 +17,10 @@ const routes: Routes = [
   {path: 'two', component: TwoComponent},
   {path: 'three', component: ThreeComponent},
   {path: 'four/:idOffer', component: FourComponent},
-  {path: 'five', component: FiveComponent},   
+  {path: 'five', component: FiveComponent}, 
+  {path: 'fetchData', component: FetchDataComponent},
+  {path: 'fetchDatav2', component: FetchdataV2Component},
+  {path: 'drivenForm', component: DrivenFormComponent}
 ];
 
 @NgModule({

@@ -14,7 +14,12 @@ import { MatInputModule } from '@angular/material/input'
 import {MatListModule} from '@angular/material/list';
 import { OneDetailComponent } from './one-detail/one-detail.component';
 import { FiveComponent } from './five/five.component';
-
+import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import {MatCardModule} from '@angular/material/card';
+import { HttpClientModule } from '@angular/common/http';
+import { FetchdataV2Component } from './fetchdata-v2/fetchdata-v2.component';
+import { DrivenFormComponent } from './driven-form/driven-form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +29,10 @@ import { FiveComponent } from './five/five.component';
     ThreeComponent,
     FourComponent,
     OneDetailComponent,
-    FiveComponent
+    FiveComponent,
+    FetchDataComponent,
+    FetchdataV2Component,
+    DrivenFormComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +41,10 @@ import { FiveComponent } from './five/five.component';
     MatFormFieldModule, 
     ReactiveFormsModule,
     MatInputModule,
-    MatListModule
+    MatListModule,
+    MatCardModule,
+    HttpClientModule , 
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

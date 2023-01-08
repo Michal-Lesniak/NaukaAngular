@@ -12,11 +12,10 @@ import { ViewChild } from '@angular/core';
 export class FourComponent implements AfterViewInit{
   posY: number = 0;
   @ViewChild('AreaY') el!: ElementRef;
-  idOffer: string = '';
+  idOffer: string = this.ActivatedRoute.snapshot.params['idOffer'];;
  constructor(private ActivatedRoute:ActivatedRoute){}
 
  ngAfterViewInit(): void {
-   this.idOffer = this.ActivatedRoute.snapshot.params['idOffer'];
    
    const mouseMove = fromEvent<MouseEvent>(this.el.nativeElement, 'mousemove');
 

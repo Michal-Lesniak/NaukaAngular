@@ -9,6 +9,8 @@ import { FiveComponent } from './five/five.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { FetchdataV2Component } from './fetchdata-v2/fetchdata-v2.component';
 import { DrivenFormComponent } from './driven-form/driven-form.component';
+import { SixComponent } from './six/six.component';
+import { SevenComponent } from './seven/seven.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'one', pathMatch: 'full'},
@@ -18,6 +20,8 @@ const routes: Routes = [
   {path: 'three', component: ThreeComponent},
   {path: 'four/:idOffer', component: FourComponent},
   {path: 'five', component: FiveComponent}, 
+  {path: 'six', component: SixComponent},
+  {path: 'seven', component: SevenComponent}, 
   {path: 'fetchData', component: FetchDataComponent},
   {path: 'fetchDatav2', component: FetchdataV2Component},
   {path: 'drivenForm', component: DrivenFormComponent}

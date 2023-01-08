@@ -1,12 +1,17 @@
 
 <h4>{{title}}</h4>
 
+<div>Randomowa wartosc wysłana z komponentu szóstego:  {{randomValue}}</div>
+
 <button type="button" routerLink="/one">One</button>
 <button type="button" routerLink="/two">Two</button>
 <button type="button" routerLink="/three">Three</button>
 <button type="button" [routerLink]="['/four',idOffer]">Four</button>
 <button type="button" routerLink="/five">Five</button>
+<button type="button" routerLink="/six">Six</button>
+<button type="button" routerLink="/seven">Seven</button>
 <button type="button" routerLink="/fetchData">FetchData</button>
 <button type="button" routerLink="/fetchDatav2">FetchDatav2</button>
 <button type="button" routerLink="/drivenForm">Formularz</button>
 <router-outlet></router-outlet>
+<app-eight></app-eight>

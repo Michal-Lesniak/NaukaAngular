@@ -12,7 +12,8 @@ import { ViewChild } from '@angular/core';
 export class FourComponent implements AfterViewInit{
   posY: number = 0;
   @ViewChild('AreaY') el!: ElementRef;
-  idOffer: string = this.ActivatedRoute.snapshot.params['idOffer'];;
+  idOffer: string = this.ActivatedRoute.snapshot.params['idOffer'];
+
  constructor(private ActivatedRoute:ActivatedRoute){}
 
  ngAfterViewInit(): void {

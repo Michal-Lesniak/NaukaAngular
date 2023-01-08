@@ -2,14 +2,39 @@
 
 <div class="container">
     <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
-        <mat-form-field class="full-width">
-            <mat-label>Author</mat-label>
-            <input matInput name="name" ngModel>
-        </mat-form-field>
-        <mat-form-field class="full-width">
-            <mat-label>Birth date</mat-label>
-            <input matInput name="birthdate" ngModel>
-        </mat-form-field>
-        <button mat-stroked-button type="submit">Wyslij</button>
+        <div ngModelGroup="person">
+            <mat-form-field class="full-width">
+                <mat-label>Author</mat-label>
+                <input 
+                type="text" 
+                matInput 
+                name="firstName"
+                #firstName="ngModel"
+                ngModel>
+            </mat-form-field>
+            <div *ngIf = "firstName.pristine">Pole musi zostac wypełnione!</div>
+            <mat-form-field class="full-width">
+                <mat-label>Birth date</mat-label>
+                <input type="text" matInput name="birthdate" 
+                #birth = "ngModel" 
+                ngModel>
+            </mat-form-field>
+            <div *ngIf = "birth.touched">Uzueołnij date.</div>
+        </div>
+        <div>
+            <mat-form-field class="full-width">
+                <mat-label>Description</mat-label>
+                <textarea 
+                cdkTextareaAutosize 
+                type="text"
+                minlength="5"
+                 matInput 
+                 required
+                 name="description" 
+                 ngModel>
+                </textarea>
+            </mat-form-field>
+        </div> 
+        <button mat-stroked-button type="submit" [disabled]="form.invalid">Wyslij</button>
     </form>
 </div>

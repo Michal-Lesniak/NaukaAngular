@@ -18,8 +18,13 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import {MatCardModule} from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { FetchdataV2Component } from './fetchdata-v2/fetchdata-v2.component';
-import { DrivenFormComponent } from './driven-form/driven-form.component';
 import { FormsModule } from '@angular/forms';
+import {TextFieldModule} from '@angular/cdk/text-field';
+import { SixComponent } from './six/six.component';
+import { DrivenFormComponent } from './driven-form/driven-form.component';
+import { SevenComponent } from './seven/seven.component';
+import { EightComponent } from './eight/eight.component';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +37,10 @@ import { FormsModule } from '@angular/forms';
     FiveComponent,
     FetchDataComponent,
     FetchdataV2Component,
-    DrivenFormComponent
+    SixComponent,
+    DrivenFormComponent,
+    SevenComponent,
+    EightComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +52,9 @@ import { FormsModule } from '@angular/forms';
     MatListModule,
     MatCardModule,
     HttpClientModule , 
-    FormsModule
+    FormsModule,
+    TextFieldModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

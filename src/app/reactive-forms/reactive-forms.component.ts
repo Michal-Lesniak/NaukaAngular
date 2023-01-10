@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, FormArray  } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, FormBuilder  } from '@angular/forms';
+import { debounceTime } from 'rxjs';
 
 @Component({
   selector: 'app-reactive-forms',
@@ -9,28 +10,43 @@ import { FormGroup, FormControl, FormArray  } from '@angular/forms';
 export class ReactiveFormsComponent {
     myForm: FormGroup;
     
-    constructor() {
-       this.myForm = new FormGroup({
-      name: new FormControl(''),
-      avaiblity: new FormGroup({
-          start: new FormControl<Date | null>(null),
-          end: new FormControl<Date | null>(null)
-      }),
-      description: new FormControl(''),
-      emails: new FormArray([
-        new FormControl(),
-      ]),  
-    });
+    constructor(private fb: FormBuilder) {
+      this.myForm = this.fb.group({
+        name: [''],
+        description: [''],
+        avaiblity: this.fb.group({
+          start: [''],
+          end: ['']
+        }),
+        emails: this.fb.array([
+          this.fb.control('')
+        ])
+      });
+
+      this.myForm.get('description')?.valueChanges.pipe( 
+        debounceTime(1500)
+      ).subscribe(
+        data => console.log(data)
+      )
+
     }
 
-   
 
+    reload = () =>{
+      this.myForm.patchValue({
+        name: "Michał"
+      });
+    }
 
     onSubmit = () => {
       console.log(this.myForm.value);
     }
 
+    get emails(){
+      return this.myForm.get('emails') as FormArray;
+    }
+
     addEmail = () => {
-      (this.myForm.get('emails') as FormArray).push(new FormControl('')); 
+      this.emails.push(this.fb.control(''));
     }
 }

@@ -23,19 +23,24 @@
     cdkTextareaAutosize
     formControlName = "description" 
     ></textarea>
-    <ng-container formArrayName="emails">
-        <div >
-            <span *ngFor="let email of emails.controls; let i = index">
-                <mat-form-field >
-                    <mat-label> Email {{i+1}}</mat-label>
-                    <input type="text" matInput formControlName="email">
-                </mat-form-field>
-            </span>
-            <button (click)="addEmail()">Add</button>
-        </div>
-    </ng-container>
-    
-    
   </mat-form-field>
+ 
+
+  
+    <div formArrayName="emails">
+        <span *ngFor="let email of emails.controls; let i = index">
+            <mat-form-field >
+                <mat-label> Email {{i+1}}</mat-label>
+                <input type="text" matInput [formControlName]="i">
+                
+            </mat-form-field>
+        </span>
+    </div>
+  <button (click)="addEmail()">Add</button>
+    
+    
+
   <button type="submit" mat-stroked-buttton>Submit</button>
+  <button type="button" mat-stroked-buttton (click)="myForm.reset()">Kasowanie</button>
+  <button type="button" mat-stroked-buttton (click)="reload()">Wgraj</button> 
 </form>

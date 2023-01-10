@@ -24,6 +24,9 @@ import { SixComponent } from './six/six.component';
 import { DrivenFormComponent } from './driven-form/driven-form.component';
 import { SevenComponent } from './seven/seven.component';
 import { EightComponent } from './eight/eight.component';
+import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core'; 
 
 
 @NgModule({
@@ -40,7 +43,8 @@ import { EightComponent } from './eight/eight.component';
     SixComponent,
     DrivenFormComponent,
     SevenComponent,
-    EightComponent
+    EightComponent,
+    ReactiveFormsComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +58,10 @@ import { EightComponent } from './eight/eight.component';
     HttpClientModule , 
     FormsModule,
     TextFieldModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

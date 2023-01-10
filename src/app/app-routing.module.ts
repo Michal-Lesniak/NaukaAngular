@@ -11,6 +11,7 @@ import { FetchdataV2Component } from './fetchdata-v2/fetchdata-v2.component';
 import { DrivenFormComponent } from './driven-form/driven-form.component';
 import { SixComponent } from './six/six.component';
 import { SevenComponent } from './seven/seven.component';
+import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'one', pathMatch: 'full'},
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'seven', component: SevenComponent}, 
   {path: 'fetchData', component: FetchDataComponent},
   {path: 'fetchDatav2', component: FetchdataV2Component},
-  {path: 'drivenForm', component: DrivenFormComponent}
+  {path: 'drivenForm', component: DrivenFormComponent},
+  {path: 'reactiveForm', component: ReactiveFormsComponent}
 ];
 
 @NgModule({

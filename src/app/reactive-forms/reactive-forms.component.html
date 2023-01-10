@@ -1,0 +1,41 @@
+<p>reactive-forms works!</p>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+<mat-form-field appearance="fill">
+    <mat-label>Input</mat-label>
+    <input matInput formControlName = "name">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter a date range</mat-label>
+    <mat-date-range-input formGroupName = "avaiblity" [rangePicker]="picker">
+      <input matStartDate formControlName="start" placeholder="Start date">
+      <input matEndDate formControlName="end" placeholder="End date">
+    </mat-date-range-input >
+    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  
+    <mat-error *ngIf="this.myForm.get('avaiblity.start')?.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+    <mat-error *ngIf="this.myForm.get('avaiblity.end')?.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Textarea</mat-label>
+    <textarea matInput
+    cdkTextareaAutosize
+    formControlName = "description" 
+    ></textarea>
+    <ng-container formArrayName="emails">
+        <div >
+            <span *ngFor="let email of emails.controls; let i = index">
+                <mat-form-field >
+                    <mat-label> Email {{i+1}}</mat-label>
+                    <input type="text" matInput formControlName="email">
+                </mat-form-field>
+            </span>
+            <button (click)="addEmail()">Add</button>
+        </div>
+    </ng-container>
+    
+    
+  </mat-form-field>
+  <button type="submit" mat-stroked-buttton>Submit</button>
+</form>

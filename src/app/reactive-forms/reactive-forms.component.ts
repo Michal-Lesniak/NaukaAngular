@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, FormArray, FormBuilder  } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, FormBuilder, Validator, ValidationErrors } from '@angular/forms';
 import { debounceTime } from 'rxjs';
+import { Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-reactive-forms',
@@ -12,8 +14,9 @@ export class ReactiveFormsComponent {
     
     constructor(private fb: FormBuilder) {
       this.myForm = this.fb.group({
-        name: [''],
-        description: [''],
+        name: ['',Validators.required],
+        description: ['', {validators: [Validators.minLength(3),this.customValidation],
+          updateOn: 'submit'}  ],
         avaiblity: this.fb.group({
           start: [''],
           end: ['']
@@ -23,6 +26,7 @@ export class ReactiveFormsComponent {
         ])
       });
 
+
       this.myForm.get('description')?.valueChanges.pipe( 
         debounceTime(1500)
       ).subscribe(
@@ -31,6 +35,11 @@ export class ReactiveFormsComponent {
 
     }
 
+    customValidation(control:FormControl): ValidationErrors | null  {
+      const value = control.value;
+      const validate = value.match(/super/i);
+      return validate ? null : {custom: true };
+    }
 
     reload = () =>{
       this.myForm.patchValue({

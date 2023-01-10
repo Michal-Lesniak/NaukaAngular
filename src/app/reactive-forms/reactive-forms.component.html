@@ -23,6 +23,8 @@
     cdkTextareaAutosize
     formControlName = "description" 
     ></textarea>
+    <mat-error *ngIf="this.myForm.get('description')?.hasError('custom')">Opis musi zawierac super</mat-error>
+    <mat-error *ngIf="this.myForm.get('description')?.hasError('minlength')">Wpisz conajmniej 3 litery</mat-error>
   </mat-form-field>
  
 

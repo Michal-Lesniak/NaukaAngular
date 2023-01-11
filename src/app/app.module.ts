@@ -26,7 +26,14 @@ import { SevenComponent } from './seven/seven.component';
 import { EightComponent } from './eight/eight.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core'; 
+import { MatNativeDateModule } from '@angular/material/core';
+import { UseFactoryComponent } from './use-factory/use-factory.component'; 
+import { PrimeService } from './prime.service';
+import { serviceFactory } from './factoryservice.service';
+import { whichService } from './calculation.service';
+import { ParentComponent } from './parent/parent.component';
+import { ChildComponent } from './child/child.component';
+import { GrandchildComponent } from './grandchild/grandchild.component';
 
 
 @NgModule({
@@ -44,7 +51,11 @@ import { MatNativeDateModule } from '@angular/material/core';
     DrivenFormComponent,
     SevenComponent,
     EightComponent,
-    ReactiveFormsComponent
+    ReactiveFormsComponent,
+    UseFactoryComponent,
+    ParentComponent,
+    ChildComponent,
+    GrandchildComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +74,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDatepickerModule,
     MatNativeDateModule
   ],
-  providers: [],
+  providers: [{provide: PrimeService, useFactory: serviceFactory, deps: ['CalcService']},{provide: 'CalcService', useValue: whichService.info} ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

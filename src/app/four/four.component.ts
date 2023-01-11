@@ -18,6 +18,9 @@ export class FourComponent implements AfterViewInit{
 
  ngAfterViewInit(): void {
    
+
+  
+
    const mouseMove = fromEvent<MouseEvent>(this.el.nativeElement, 'mousemove');
 
    mouseMove.pipe(map(z => z.clientY)).subscribe(data => this.posY = data);

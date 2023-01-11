@@ -42,7 +42,7 @@
     
     
 
-  <button type="submit" mat-stroked-buttton>Submit</button>
+  <button type="submit" [disabled]="myForm.invalid">Submit</button>
   <button type="button" mat-stroked-buttton (click)="myForm.reset()">Kasowanie</button>
   <button type="button" mat-stroked-buttton (click)="reload()">Wgraj</button> 
 </form>

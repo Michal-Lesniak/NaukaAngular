@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, FormArray, FormBuilder, Validator, ValidationErrors } from '@angular/forms';
 import { debounceTime } from 'rxjs';
 import { Validators } from '@angular/forms';
+import { ValidationServiceService } from '../validation-service.service';
+
 
 
 @Component({
@@ -12,34 +14,37 @@ import { Validators } from '@angular/forms';
 export class ReactiveFormsComponent {
     myForm: FormGroup;
     
-    constructor(private fb: FormBuilder) {
+    constructor(private fb: FormBuilder, validationService: ValidationServiceService) {
       this.myForm = this.fb.group({
         name: ['',Validators.required],
-        description: ['', {validators: [Validators.minLength(3),this.customValidation],
-          updateOn: 'submit'}  ],
+        description: ['', 
+        '',
+        validationService.customValidation ],
         avaiblity: this.fb.group({
           start: [''],
           end: ['']
         }),
         emails: this.fb.array([
-          this.fb.control('')
+          this.fb.control('', Validators.email)
         ])
       });
 
 
-      this.myForm.get('description')?.valueChanges.pipe( 
-        debounceTime(1500)
-      ).subscribe(
-        data => console.log(data)
-      )
+    //   this.myForm.get('name')?.valueChanges.pipe( 
+    //     debounceTime(1500)
+    //   ).subscribe(
+    //     value =>{        
+    //       const descControl = this.myForm.get('description');
+    //       if(value === 'Sylwia'){
+    //         descControl?.addValidators(validationService.customValidation);
+    //       }
+    //       descControl?.updateValueAndValidity();
+    //     }
+    //   )
 
     }
 
-    customValidation(control:FormControl): ValidationErrors | null  {
-      const value = control.value;
-      const validate = value.match(/super/i);
-      return validate ? null : {custom: true };
-    }
+   
 
     reload = () =>{
       this.myForm.patchValue({
